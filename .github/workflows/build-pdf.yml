@@ -21,6 +21,7 @@ jobs:
       
       - name: Install Fonts from Repo
         run: |
+          ls font-tmp
           mkdir -p ~/.local/share/fonts
           cp -r font-tmp/* ~/.local/share/fonts/
           rm -rf font-tmp
