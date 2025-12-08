@@ -20,13 +20,12 @@ jobs:
           path: font-tmp
       
       - name: Install Fonts from Repo
-        if: steps.cache-fonts.outputs.cache-hit != 'true'
         run: |
           mkdir -p ~/.local/share/fonts
           cp -r font-tmp/* ~/.local/share/fonts/
           rm -rf font-tmp
           fc-cache -f -v
-          fc-list | head -n 5
+          fc-list | grep -i "noto serif sc"
       
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
