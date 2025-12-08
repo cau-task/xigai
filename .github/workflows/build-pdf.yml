@@ -14,19 +14,19 @@ jobs:
         uses: actions/checkout@v6
 
       - name: checkout font repository
-            uses: actions/checkout@v6
-            with:
-              repository: cau-task/font
-              path: /tmp/font
+        uses: actions/checkout@v6
+        with:
+          repository: cau-task/font
+          path: /tmp/font
       
       - name: Install Fonts from Repo
-            if: steps.cache-fonts.outputs.cache-hit != 'true'
-            run: |
-              mkdir -p ~/.local/share/fonts
-              cp -r /tmp/font/* ~/.local/share/fonts/
-              rm -rf /tmp/font
-              fc-cache -f -v
-              fc-list | head -n 5
+        if: steps.cache-fonts.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.local/share/fonts
+          cp -r /tmp/font/* ~/.local/share/fonts/
+          rm -rf /tmp/font
+          fc-cache -f -v
+          fc-list | head -n 5
       
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
